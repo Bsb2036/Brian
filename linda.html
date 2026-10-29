@@ -1,11 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lindas page</title>
-</head>
-<body>
-  <h1>Lindas page</h1>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f5f0">
+    <title>Linda's care calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Linda's care calendar home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M16 26s-9.5-5.8-9.5-13a5.3 5.3 0 0 1 9.5-3.2 5.3 5.3 0 0 1 9.5 3.2C25.5 20.2 16 26 16 26Z" fill="currentColor"/><path d="M11 16h3l1.5-3.5 2.5 7 1.5-3.5H23" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+          </span>
+          <span class="brand-copy"><strong>carefully</strong><small>Linda's care calendar</small></span>
+        </a>
+        <div class="topbar-right">
+          <span class="privacy-note"><span class="privacy-dot"></span> Just for your family</span>
+          <span class="avatar" aria-label="Care team">LJ</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="welcome-row">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> THE CARE TEAM'S SHARED SPACE</div>
+            <h1>Time well spent <span class="heading-heart" aria-hidden="true">♥</span></h1>
+            <p class="welcome-copy">A little planning makes more room for what matters.</p>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">LJ</div>
+            <div><span class="person-label">CARING FOR</span><strong>Linda Jones</strong></div>
+            <span class="person-chevron" aria-hidden="true">⌄</span>
+          </div>
+        </section>
+
+        <section class="calendar-card" aria-label="Care schedule">
+          <div class="calendar-toolbar">
+            <div class="date-heading">
+              <h2 id="period-title"></h2>
+              <div class="date-controls" aria-label="Calendar navigation">
+                <button class="icon-button" id="previous-period" type="button" aria-label="Go to previous period">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12.5 4.5-5.5 5.5 5.5 5.5"/></svg>
+                </button>
+                <button class="icon-button" id="next-period" type="button" aria-label="Go to next period">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4.5 5.5 5.5-5.5 5.5"/></svg>
+                </button>
+                <button class="today-button" id="go-today" type="button">Today</button>
+              </div>
+            </div>
+            <div class="toolbar-actions">
+              <div class="view-switch" role="group" aria-label="Calendar view">
+                <button type="button" class="view-option" data-view="day" aria-pressed="false">Day</button>
+                <button type="button" class="view-option is-active" data-view="week" aria-pressed="true">Week</button>
+                <button type="button" class="view-option" data-view="month" aria-pressed="false">Month</button>
+              </div>
+              <button class="add-button" id="add-event" type="button">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg>
+                <span>Add time</span>
+              </button>
+            </div>
+          </div>
+          <p class="sr-only" id="calendar-announcement" aria-live="polite"></p>
+          <div id="calendar-view"></div>
+          <footer class="calendar-footer">
+            <div class="legend" aria-label="Care activity types">
+              <span><i class="legend-dot lavender"></i>Appointments</span>
+              <span><i class="legend-dot sage"></i>Daily care</span>
+              <span><i class="legend-dot peach"></i>Family time</span>
+              <span><i class="legend-dot blue"></i>Wellness</span>
+            </div>
+            <span class="local-note"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg> Saved on this device</span>
+          </footer>
+        </section>
+        <p class="page-note">Made with care, for the people who care. <span aria-hidden="true">✳</span></p>
+      </main>
+    </div>
+
+    <dialog class="event-dialog" id="event-dialog" aria-labelledby="dialog-title">
+      <form id="event-form">
+        <div class="dialog-top">
+          <div>
+            <div class="dialog-eyebrow">LINDA'S SCHEDULE</div>
+            <h2 id="dialog-title">Plan some time</h2>
+          </div>
+          <button class="dialog-close" id="close-dialog" type="button" aria-label="Close dialog">×</button>
+        </div>
+        <label class="field-label" for="event-caregiver">Caregiver's name</label>
+        <select id="event-caregiver" name="caregiver" required>
+          <option value="Caregiver 1">Caregiver 1</option>
+          <option value="Caregiver 2">Caregiver 2</option>
+          <option value="Caregiver 3">Caregiver 3</option>
+          <option value="Caregiver 4">Caregiver 4</option>
+          <option value="Caregiver 5">Caregiver 5</option>
+          <option value="Caregiver 6">Caregiver 6</option>
+          <option value="Caregiver 7">Caregiver 7</option>
+          <option value="Caregiver 8">Caregiver 8</option>
+          <option value="Caregiver 9">Caregiver 9</option>
+          <option value="Caregiver 10">Caregiver 10</option>
+        </select>
+        <label class="field-label" for="event-title">Care activity</label>
+        <input id="event-title" name="title" type="text" maxlength="80" placeholder="e.g. Lunch with Linda" required>
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label" for="event-date">Date</label>
+            <input id="event-date" name="date" type="date" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="event-type">Type</label>
+            <select id="event-type" name="type">
+              <option value="care">Daily care</option>
+              <option value="appointment">Appointment</option>
+              <option value="family">Family time</option>
+              <option value="wellness">Wellness</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label" for="event-start">Starts</label>
+            <input id="event-start" name="start" type="time" value="09:00" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="event-end">Ends</label>
+            <input id="event-end" name="end" type="time" value="10:00" required>
+          </div>
+        </div>
+        <label class="field-label" for="event-repeat">Repeat weekly</label>
+        <select id="event-repeat" name="repeat">
+          <option value="0">No repeat</option>
+          <option value="1">For 1 week (1 extra date)</option>
+          <option value="2">For 2 weeks (2 extra dates)</option>
+          <option value="4">For 1 month (4 extra dates)</option>
+        </select>
+        <p class="repeat-help" id="repeat-help">Adds the same caregiver, activity, and time on this weekday. The selected date is included, plus the extra weeks you choose.</p>
+        <label class="field-label" for="event-notes">A note for the caregiver <span class="optional">(optional)</span></label>
+        <textarea id="event-notes" name="notes" rows="3" maxlength="300" placeholder="Anything helpful to remember?"></textarea>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button class="delete-button" id="delete-event" type="button" hidden>Delete</button>
+          <span class="action-spacer"></span>
+          <button class="cancel-button" id="cancel-dialog" type="button">Cancel</button>
+          <button class="save-button" type="submit">Save time</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
 </html>
