@@ -6,7 +6,7 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --ink: #333a36;
-  --muted: #788079;
+  --muted: #606760;
   --line: #e8e9e3;
   --paper: #fff;
   --green: #587362;
@@ -51,7 +51,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid #8eac98;
+  outline: 3px solid var(--green-dark);
   outline-offset: 3px;
 }
 
@@ -98,6 +98,32 @@ textarea:focus-visible {
 .brand-copy small {
   color: var(--muted);
   font-size: 12px;
+}
+
+.portfolio-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.portfolio-nav a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.portfolio-nav a:hover {
+  border-color: var(--green-dark);
+  background: var(--green-soft);
 }
 
 .topbar-right {
@@ -154,7 +180,7 @@ main {
 .person-label,
 .dialog-eyebrow {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.4px;
 }
@@ -220,7 +246,7 @@ h1 {
 }
 
 .person-label {
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .person-card strong {
@@ -452,7 +478,7 @@ h1 {
 .event-caregiver,
 .event-notes {
   color: #647068;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -466,7 +492,7 @@ h1 {
   display: inline-block;
   margin: 0 10px 8px;
   color: var(--green-dark);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -520,7 +546,7 @@ h1 {
   border-bottom: 1px solid var(--line);
   background: #fbfbf9;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   text-align: center;
 }
@@ -551,7 +577,7 @@ h1 {
 
 .month-day.outside-month {
   background: #fbfbf9;
-  color: #a3aaa4;
+  color: var(--muted);
 }
 
 .month-day.is-today .month-day-number {
@@ -576,14 +602,14 @@ h1 {
   padding: 4px 5px;
   border: 1px solid transparent;
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 12px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .month-more {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .calendar-footer {
@@ -786,6 +812,21 @@ h1 {
     width: min(100% - 32px, 640px);
   }
 
+  .topbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-block: 12px;
+  }
+
+  .portfolio-nav {
+    order: 2;
+    width: 100%;
+  }
+
+  .topbar-right {
+    order: 1;
+  }
+
   main {
     padding-top: 28px;
   }
@@ -829,7 +870,7 @@ h1 {
 
   .privacy-note {
     max-width: 110px;
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .topbar-right {
@@ -841,7 +882,7 @@ h1 {
   }
 
   .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 1px;
   }
 
